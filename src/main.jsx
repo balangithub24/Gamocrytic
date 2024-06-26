@@ -8,9 +8,6 @@ import { AllPostsProvider } from "./contexts/AllPostsProvider"; // Adjust the pa
 
 ReactGA.initialize("G-J3HF1KPR55");
 
-// Send pageview with a custom path
-// ReactGA.send({ hitType: "pageview", page: "/logiin", title: "suiii" });
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AllPostsProvider>
