@@ -1,0 +1,56 @@
+@import url(../index.css);
+
+.all {
+  width: 90%;
+  height: auto;
+  margin: 60px 5% 100px;
+}
+
+.a-top {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.a-top::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--dark);
+}
+
+.a-title {
+  padding: 10px 0;
+}
+
+.a-title h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--dark);
+}
+
+.a-content {
+  width: 100%;
+  height: auto;
+  margin: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7.4%;
+}
+
+.a-card {
+  height: 300px;
+  margin: 30px 0;
+}
+
+@media (max-width: 800px) {
+
+  .a-content{
+    gap: 1.2232%;
+  }
+
+  .a-card{
+    height: 247px;
+  }
+}

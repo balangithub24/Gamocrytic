@@ -1,0 +1,147 @@
+@import url(.././index.css);
+
+nav {
+  height: 60px;
+  background-color: var(--dark);
+  font-weight: 500;
+  color: var(--light);
+}
+
+.container {
+  height: 100%;
+  width: 90%;
+  margin: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.n-logo {
+  width: 210px;
+  height: 45px;
+  display: flex;
+  justify-content: start;
+}
+
+.n-logo img {
+  width: auto;
+  height: 45px;
+}
+
+.menu {
+  width: 600px;
+  height: 100%;
+}
+
+.navlist {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menu li {
+  color: var(--light);
+  cursor: pointer;
+}
+
+.menu li:hover {
+  color: var(--primary);
+}
+
+#menu-icon {
+  font-size: 40px;
+  color: var(--light);
+  z-index: 10001;
+  cursor: pointer;
+  margin: 10px 0;
+  display: none;
+}
+
+.search {
+  width: 360px;
+  height: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.lens {
+  display: none;
+}
+
+.n-login {
+  height: 81%;
+  width: 120px;
+  margin-right: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.n-login button {
+  width: 90px;
+  padding: 9px;
+  border-radius: 5px;
+  font-size: medium;
+  font-weight: 500;
+  color: var(--dark);
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+.n-login button:hover {
+  background-color: var(--primary-l);
+}
+
+@media (max-width: 780px) {
+  .n-logo {
+    width: auto;
+  }
+
+  .menu {
+    width: 50px;
+    margin-left: 10px;
+  }
+
+  .navlist {
+    position: absolute;
+    top: -1000px;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--dark);
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all 0.45s ease;
+    z-index: 1000;
+    height: 60vh;
+  }
+
+  .navlist.open {
+    top: 8%;
+  }
+
+  .navlist li {
+    font-size: 20px;
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  .search {
+    width: 300px;
+    justify-content: end;
+    padding-right: 15px;
+    cursor: pointer;
+  }
+
+  .lens {
+    height: 100%;
+    width: 36px;
+    display: flex;
+    align-items: center;
+  }
+}

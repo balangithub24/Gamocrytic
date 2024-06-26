@@ -1,0 +1,76 @@
+@import url(../index.css);
+
+.login {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.login form {
+  width: 600px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: bold;
+  box-shadow: 0 0 20px 5px grey;
+  border-radius: 10px;
+  background-color: var(--light);
+}
+
+.login h1 {
+  font-weight: 700;
+  padding-bottom: 30px;
+  color: var(--dark);
+}
+
+#welcome{
+  font-weight: 300;
+}
+
+.login input,
+.login button {
+  width: 85%;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  background-color: #fff;
+}
+
+.login input:focus {
+  outline: none;
+}
+
+.login a {
+  margin-bottom: 20px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.login button {
+  color: var(--dark);
+  background-color: var(--primary);
+  border: none;
+  font-weight: 500;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.login p {
+  color: var(--dark-t);
+  margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+  .login{
+    padding-top: 0;
+  }
+  .login form{
+    height: 100vh;
+    border-radius: 0;
+  }
+}

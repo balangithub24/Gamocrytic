@@ -1,0 +1,8 @@
+@import url(../index.css);
+
+.home{
+    width: 100%;
+    background-color: var(--light);
+    height: auto;
+}
+

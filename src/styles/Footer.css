@@ -1,0 +1,144 @@
+@import url(../index.css);
+
+.foot {
+  width: 100%;
+  height: auto;
+  margin-bottom: 90px;
+}
+
+.line {
+  display: flex;
+  width: 100%;
+  height: 15px;
+}
+
+.box-1 {
+  width: 33%;
+  background-color: var(--secondary);
+}
+
+.box-2 {
+  width: 34%;
+  background-color: var(--primary);
+}
+
+.box-3 {
+  width: 33%;
+  background-color: var(--dark);
+}
+
+.f-content {
+  width: 64%;
+  height: auto;
+  margin: 0 18%;
+  display: flex;
+}
+
+.vertical {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--dark);
+}
+
+.vertical h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.vertical a {
+  color: var(--dark);
+  transition: color 0.01s ease;
+}
+
+.vertical a:hover {
+  color: var(--primary);
+}
+
+.overview {
+  width: 30%;
+}
+
+.follow {
+  width: 40%;
+}
+
+.f-top {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icons {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.icons i {
+  font-size: 45px;
+}
+
+.f-bottom {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  font-size: 0.8rem;
+  color: var(--dark-t);
+}
+
+.explore {
+  width: 30%;
+}
+
+.slider i {
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 20px;
+  color: var(--dark);
+  background: var(--primary);
+  position: fixed;
+  bottom: -35px;
+  right: 20px;
+  opacity: 0;
+  transition: all 1.5s ease;
+  cursor: pointer;
+}
+
+.show i {
+  bottom: 20px;
+  opacity: 1;
+}
+
+@media (max-width: 800px) {
+  .f-content {
+    flex-direction: column;
+    width: 90%;
+    margin: 0 5%;
+  }
+
+  .overview,
+  .follow,
+  .explore {
+    width: 100%;
+  }
+
+  .follow {
+    margin: 60px 0;
+    height: 100px;
+  }
+
+  .f-bottom {
+    margin-top: 400px;
+  }
+}

@@ -1,0 +1,14 @@
+@import url(../index.css);
+
+.slogan{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: end;
+}
+
+.slogan p{
+    color: var(--dark-t);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
