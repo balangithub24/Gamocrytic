@@ -145,3 +145,9 @@ nav {
     align-items: center;
   }
 }
+
+@media (max-width: 400px) {
+  .search{
+    width: 280px;
+  }
+}

@@ -12,13 +12,13 @@
 }
 
 :root{
-    --primary : #f05454;
-    --primary-t : #f05454c0;
+    --primary : #F4CE14;
+    --primary-t : #f4cf14c0;
     --primary-l : #f3d74a;
-    --secondary : #30475e;
-    --light : #f5f5f5;
-    --dark : #121212;
-    --dark-t : #121212b9;
+    --secondary : #379777;
+    --light : #F5F7F8;
+    --dark : #45474B;
+    --dark-t : #45474bb9;
 }
 
 body{

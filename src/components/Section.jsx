@@ -1,13 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from "./Card";
 
 import "../styles/Section.css";
 import { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-export default function Section({ type, link, posts }) {
-  const navigate = useNavigate();
-
+function Section({ sectionTitle, sectionUrl, sectionPosts }) {
   const [scrollActiveLeft, setScrollActiveLeft] = useState(false);
   const [scrollActiveRight, setScrollActiveRight] = useState(false);
   const contentRef = useRef(null);
@@ -58,16 +56,12 @@ export default function Section({ type, link, posts }) {
     };
   }, []);
 
-  const handleClick = () => {
-    navigate(`/all/${link}`, { state: { type, posts } });
-  };
-
   return (
     <div className="section">
       <div className="top">
         <div className="title">
-          <h2>{type}</h2>
-          <span onClick={handleClick}>see all</span>
+          <h2>{sectionTitle}</h2>
+          <Link to={`/all/${sectionUrl}`}>see all</Link>
         </div>
         <div className="arrow">
           <button
@@ -81,14 +75,15 @@ export default function Section({ type, link, posts }) {
         </div>
       </div>
       <div className="content" ref={contentRef}>
-        {posts.map((post, index) => (
-          <Card
-            key={index}
-            image={post.image}
-            title={post.title}
-            score={post.score}
-            category={post.category}
-          />
+        {sectionPosts.map((post, index) => (
+          <div key={index} className="card">
+            <Card
+              image={post.image}
+              title={post.title}
+              score={post.score}
+              category={post.category}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -96,9 +91,9 @@ export default function Section({ type, link, posts }) {
 }
 
 Section.propTypes = {
-  type: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  posts: PropTypes.arrayOf(
+  sectionTitle: PropTypes.string.isRequired,
+  sectionUrl: PropTypes.string.isRequired,
+  sectionPosts: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
@@ -107,3 +102,5 @@ Section.propTypes = {
     })
   ).isRequired,
 };
+
+export default Section;

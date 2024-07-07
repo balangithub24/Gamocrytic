@@ -1,14 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import ReactGA from "react-ga4";
+import { trackEvent } from "../analytics";
 import axios from "axios";
-import fullLogo from "../assets/logo/G-Logo-Light.svg";
-import logo from "../assets/logo/G-Favicon.svg";
+import fullLogo from "../assets/logo/D-Logo-Light.svg";
+import logo from "../assets/logo/D-Favicon.svg";
 import { useAllPost } from "../contexts/AllPostsProvider";
 import searchIcon from "../assets/icons/SearchLight.svg";
 import xIcon from "../assets/icons/XLight.svg";
 import Search from "./Search";
-import API_URL from "../../config/global";
+import { API_URL } from "../../config/global";
 
 import "../styles/Navbar.css";
 
@@ -19,23 +19,17 @@ export default function Navbar() {
   const [isLoginVisible, setIsLoginVisible] = useState(true);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
-
   const burgerRef = useRef(null);
   const navRef = useRef(null);
-
-  const [res, setRes] = useState({});
 
   useEffect(() => {
     // Retrieve user info from localStorage
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
     if (userInfo && userInfo.token) {
       getData(userInfo.token);
-    }
-
-    if (userInfo) {
-      setUser(userInfo);
     }
   }, []);
 
@@ -52,10 +46,10 @@ export default function Navbar() {
       } else if (response.data === "Server Busy") {
         alert("unauthorised access");
       } else if (response?.status) {
-        setRes(response.data);
+        setUser(response.data);
       }
     } catch (e) {
-      console.log(e);
+      console.error("Error occured during fetching user data: ", e);
     }
   };
 
@@ -64,27 +58,19 @@ export default function Navbar() {
 
     if (isConfirmed) {
       // Send logout attempt event to Google Analytics
-      ReactGA.event({
-        category: "User",
-        action: "Attempted Logout",
-        label: res.email,
-      });
+      trackEvent("User", "Attempted Logout", user.email);
 
       localStorage.removeItem("userInfo");
       setUser(null);
-      navigate("/");
+      navigate("/login");
     }
   };
 
-  const handleClick = (type, link, posts) => {
+  const handleClick = (sectionTitle, sectionUrl) => {
     // Send menu item click event to Google Analytics
-    ReactGA.event({
-      category: "Navigation",
-      action: "Clicked Menu Item",
-      label: type,
-    });
+    trackEvent("Navigation", "Clicked Menu Item", sectionTitle);
 
-    navigate(`/all/${link}`, { state: { type, posts } });
+    navigate(`/all/${sectionUrl}`);
 
     burgerRef.current.classList.remove("bx-x");
     navRef.current.classList.remove("open");
@@ -121,21 +107,24 @@ export default function Navbar() {
       <div className="container">
         <div className="n-logo">
           <Link to="/">
-            <img src={screenWidth > 800 ? fullLogo : logo} alt="DeCritic Logo" />
+            <img
+              src={screenWidth > 800 ? fullLogo : logo}
+              alt="DeCritic Logo"
+            />
           </Link>
         </div>
 
         {!isSearchVisible && (
           <div className="menu">
             <ul className="navlist" ref={navRef}>
-              {allPost.map((value, index) => (
+              {allPost.map((group, index) => (
                 <li
                   key={index}
                   onClick={() =>
-                    handleClick(value.type, value.link, value.posts)
+                    handleClick(group.sectionTitle, group.sectionUrl)
                   }
                 >
-                  {value.type.split(" ")[0]}
+                  {group.sectionTitle.split(" ")[0]}
                 </li>
               ))}
             </ul>
@@ -158,7 +147,7 @@ export default function Navbar() {
 
         {isLoginVisible && (
           <div className="n-login">
-            {user ? (
+            {Object.keys(user).length ? (
               <>
                 <button onClick={handleLogout}>Logout</button>
               </>

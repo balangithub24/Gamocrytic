@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ReactGA from "react-ga4"; // Import ReactGA
+import { trackEvent } from "../analytics";
 import Logo from "../components/Logo";
-import "../styles/Login.css";
-import API_URL from "../../config/global";
+import { API_URL } from "../../config/global";
 
 import "../styles/Login.css";
 
@@ -22,16 +21,14 @@ function Login() {
     e.preventDefault();
 
     // Send login attempt event to Google Analytics
-    ReactGA.event({
-      category: "User",
-      action: "Attempted Login",
-      label: FormData.email,
-    });
+    trackEvent("User", "Attempted Login", FormData.email);
 
     try {
       const response = await axios.post(`${API_URL}/login`, FormData);
-      if (response.data === "Invalid User name or Password") {
-        alert(response.data);
+      if (!response.data) {
+        alert(
+          "Wrong password!\nTry again or click ‘Forgot password’ to reset it."
+        );
       } else if (response.data === "Server Busy") {
         alert("Verify your email id");
       } else if (response?.status) {
@@ -39,7 +36,7 @@ function Login() {
         navigate("/");
       }
     } catch (e) {
-      console.log("Error during Login", e);
+      console.error("Error during Login: ", e);
     }
   };
   return (

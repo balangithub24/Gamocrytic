@@ -2,8 +2,8 @@ import Logo from "../components/Logo";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ReactGA from "react-ga4";
-import API_URL from "../../config/global";
+import { trackEvent } from "../analytics";
+import { API_URL } from "../../config/global";
 
 import "../styles/Login.css";
 
@@ -20,26 +20,27 @@ function SignUp() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Send signup attempt event to Google Analytics
-    ReactGA.event({
-      category: "User",
-      action: "Attempted Signup",
-      label: formData.email,
-    });
+    trackEvent("User", "Attempted SignUp", formData.email);
 
     try {
-      const response = await axios.post(`${API_URL}/signin/verify`, formData);
-      if (response.data === true) {
+      const response = await axios.post(`${API_URL}/signup/verify`, formData);
+      if (response.data === "verifyUserAdded") {
         alert("Registeration link has sent to your email id");
         navigate("/login");
-      } else if (response.data === false) {
+      } else if (response.data === "verifyUserExist") {
+        alert("Registeration link already sent to your email id");
+      } else if (response.data === "userExist") {
         alert("User already exist");
+      } else if (response.data === "Server Busy") {
+        alert("Verify your email id");
       }
     } catch (e) {
-      console.log("Error during registeration", e);
+      console.error("Error during registeration: ", e);
     }
   };
   return (

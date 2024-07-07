@@ -1,9 +1,12 @@
 import "../styles/Card.css";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 export default function Card({ image, title, score, category }) {
   const navigate = useNavigate();
+
+  const [isError, setIsError] = useState(false);
 
   let scoreColor;
   if (score > 75 && score <= 100) {
@@ -15,14 +18,25 @@ export default function Card({ image, title, score, category }) {
   }
 
   const handleClick = () => {
-    const urlTitle = title.toLowerCase().replace(/ /g, "-");
-    navigate(`/post/${urlTitle}`, { state: { image, title, score, category } });
+    const titleUrl = title
+      .toLowerCase()
+      .replace(/[\s#!?,.:;'"()&@$%*+=[\]{}/\\|]/g, "-");
+
+    navigate(`/post/${titleUrl}`);
+  };
+
+  const handleError = () => {
+    setIsError(true);
   };
 
   return (
     <div className="card" onClick={handleClick}>
       <div className="poster">
-        <img src={image} alt={title} />
+        <img
+          src={image}
+          onError={handleError}
+          style={{ display: isError ? "none" : "block" }}
+        />
       </div>
       <div className="g-title">
         <h3>{title}</h3>
@@ -40,7 +54,7 @@ export default function Card({ image, title, score, category }) {
 }
 
 Card.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   title: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,

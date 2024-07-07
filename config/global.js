@@ -1,3 +1,4 @@
-const API_URL = "https://auth-backend-eqg0.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
+const TRACKING_ID = import.meta.env.VITE_TRACKING_ID;
 
-export default API_URL;
+export { API_URL, TRACKING_ID };

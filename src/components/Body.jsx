@@ -9,13 +9,12 @@ export default function Body() {
   return (
     <div className="main">
       <Slogan />
-      {allPost.map((value, index) => (
+      {allPost.map((group, index) => (
         <Section
           key={index}
-          type={value.type}
-          link={value.link}
-          posts={value.posts}
-          allPost={allPost}
+          sectionTitle={group.sectionTitle}
+          sectionUrl={group.sectionUrl}
+          sectionPosts={group.sectionPosts}
         />
       ))}
     </div>

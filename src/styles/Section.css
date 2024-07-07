@@ -37,16 +37,15 @@
   color: var(--dark);
 }
 
-.title span {
+.title a {
   margin-left: 20px;
   text-transform: uppercase;
   text-decoration: underline;
   color: #bebebe;
   font-style: italic;
-  cursor: pointer;
 }
 
-.title span:hover {
+.title a:hover {
   color: #8f8f8f;
 }
 
@@ -69,20 +68,22 @@
 }
 
 .arrow .left {
-  background-image: url(../assets/arrows/left.png);
+  background-image: url(../assets/arrows/left.svg);
+  background-size: 18px;
 }
 
 .arrow .right {
-  background-image: url(../assets/arrows/right.png);
+  background-image: url(../assets/arrows/right.svg);
+  background-size: 18px;
 }
 
 .arrow .right.active {
-  background-image: url(../assets/arrows/right_active.png);
+  background-image: url(../assets/arrows/right_active.svg);
   cursor: pointer;
 }
 
 .arrow .left.active {
-  background-image: url(../assets/arrows/left_active.png);
+  background-image: url(../assets/arrows/left_active.svg);
   cursor: pointer;
 }
 
@@ -92,36 +93,46 @@
 }
 
 .content {
-  height: 81%;
+  height: 80%;
   display: flex;
   overflow: scroll;
+  scrollbar-width: none;
   scroll-behavior: smooth;
   gap: 20px;
+}
+
+.card{
+  width: 180px;
+  height: 100%;
 }
 
 .content::-webkit-scrollbar {
   display: none;
 }
 
-@media (max-width:800px) {
-  .section{
+@media (max-width: 800px) {
+  .section {
     height: 300px;
   }
 
-  .top::after{
+  .top::after {
     width: 100%;
   }
 
-  .title{
+  .title {
     width: 100%;
     justify-content: space-between;
   }
 
-  .arrow{
+  .arrow {
     display: none;
   }
 
-  .content{
+  .content {
     gap: 9px;
+  }
+
+  .card {
+    width: 150px;
   }
 }

@@ -1,0 +1,27 @@
+@import url(../index.css);
+.not-found {
+  text-align: center;
+  padding: 80px;
+  color: var(--dark);
+}
+
+.not-found h1 {
+  font-size: 5em;
+  margin-bottom: 20px;
+}
+
+.not-found h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.not-found p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.not-found a {
+  font-size: 1.2em;
+  color: var(--primary);
+  margin-bottom: 20px;
+}

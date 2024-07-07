@@ -1,15 +1,42 @@
-import "../styles/Post.css";
-import { useLocation } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NotFound from "../components/NotFound";
+import Loading from "../components/Loading";
+import { useAllPost } from "../contexts/AllPostsProvider";
+import "../styles/Post.css";
 
 export default function Post() {
-  const location = useLocation();
-  const { image, title, score, category } = location.state || {};
+  const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!image || !title || !score || !category) {
-    return <div className="post">No post data available</div>;
+  const { titleUrl } = useParams();
+  console.log(titleUrl);
+  const allPosts = useAllPost();
+
+  useEffect(() => {
+    const foundPost = allPosts
+      .flatMap((group) => group.sectionPosts)
+      .find(
+        (p) =>
+          p.title
+            .toLowerCase()
+            .replace(/[\s#!?,.:;'"()&@$%*+=[\]{}/\\|]/g, "-") === titleUrl
+      );
+
+    if (foundPost) {
+      setPost(foundPost);
+      setIsLoading(false);
+    }
+  }, [titleUrl, allPosts]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!post) {
+    return <NotFound />;
   }
 
   return (
@@ -17,18 +44,18 @@ export default function Post() {
       <Navbar />
       <div className="post">
         <div className="post-header">
-          <h2>{title}</h2>
+          <h2>{post.title}</h2>
         </div>
         <div className="post-image">
-          <img src={image} alt={title} />
+          <img src={post.image} alt={post.title} />
         </div>
         <div className="post-content">
           <div className="post-details">
             <p className="post-score">
-              <span>Score:</span> {score}
+              <span>Score:</span> {post.score}
             </p>
             <p className="post-category">
-              <span>Category:</span> {category}
+              <span>Category:</span> {post.category}
             </p>
           </div>
           <div className="post-review">
