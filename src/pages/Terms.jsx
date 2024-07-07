@@ -17,14 +17,14 @@ export default function Terms() {
         <div className="about-content">
           <h2>Introduction</h2>
           <p>
-            Welcome to DeCritic! These terms and conditions outline the rules
-            and regulations for the use of DeCritic&apos;s Website, located at
-            www.decritic.com.
+            Welcome to gamocrytic! These terms and conditions outline the rules
+            and regulations for the use of gamocrytic&apos;s Website, located at
+            www.gamocrytic.com.
           </p>
 
           <h2>Intellectual Property Rights</h2>
           <p>
-            Other than the content you own, under these Terms, DeCritic and/or
+            Other than the content you own, under these Terms, gamocrytic and/or
             its licensors own all the intellectual property rights and materials
             contained in this Website.
           </p>
@@ -66,7 +66,7 @@ export default function Terms() {
 
           <h2>Disclaimer</h2>
           <p>
-            This Website is provided &quot;as is,&quot; with all faults, and DeCritic
+            This Website is provided &quot;as is,&quot; with all faults, and gamocrytic
             makes no express or implied representations or warranties, of any
             kind related to this Website or the materials contained on this
             Website.
@@ -74,7 +74,7 @@ export default function Terms() {
 
           <h2>Changes to Terms</h2>
           <p>
-            DeCritic reserves the right to modify these Terms at any time. We
+          gamocrytic reserves the right to modify these Terms at any time. We
             recommend reviewing these Terms regularly for any updates.
           </p>
 

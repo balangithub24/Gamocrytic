@@ -7,7 +7,7 @@ export default function Logo() {
   return (
     <div className="logo">
       <Link to="/">
-        <img src={logo} alt="DeCritic Logo" />
+        <img src={logo} alt="gamocrytic Logo" />
       </Link>
     </div>
   );

@@ -16,15 +16,15 @@ export default function All() {
           className="about-content"
         >
           <p>
-            Welcome to <strong>DeCritic</strong>!
+            Welcome to <strong>gamocrytic</strong>!
           </p>
 
           <p>
-            At DeCritic, we&apos;re passionate about games. From the latest
+            At gamocrytic, we&apos;re passionate about games. From the latest
             triple-A titles to hidden indie gems, our mission is to provide
             honest, in-depth, and insightful reviews that help gamers make
             informed choices. Founded by a team of dedicated gamers and writers,
-            DeCritic combines a love for gaming with professional journalism to
+            gamocrytic combines a love for gaming with professional journalism to
             deliver content that resonates with players of all levels.
           </p>
 
@@ -63,7 +63,7 @@ export default function All() {
 
           <h2>Our Team</h2>
           <p>
-            DeCritic is powered by a diverse team of writers and reviewers, each
+          gamocrytic is powered by a diverse team of writers and reviewers, each
             bringing their unique voice and expertise to the table. Our team
             members are not only avid gamers but also skilled writers who are
             committed to delivering high-quality content.
@@ -74,11 +74,11 @@ export default function All() {
             We invite you to be part of our growing community. Follow us on
             social media, join our forums, and subscribe to our newsletter for
             the latest reviews and news. Your feedback and participation are
-            what make DeCritic a vibrant and inclusive space for all gamers.
+            what make gamocrytic a vibrant and inclusive space for all gamers.
           </p>
 
           <p>
-            Thank you for visiting DeCritic. Let&apos;s explore the world of
+            Thank you for visiting gamocrytic. Let&apos;s explore the world of
             gaming together!
           </p>
         </div>

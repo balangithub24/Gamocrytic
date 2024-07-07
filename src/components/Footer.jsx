@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="f-bottom">
-            <p>&copy; 2024 DeCritic. ALL RIGHTS RESERVED.</p>
+            <p>&copy; 2024 gamocrytic. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
         <div className="explore vertical">

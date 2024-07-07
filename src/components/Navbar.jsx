@@ -109,7 +109,7 @@ export default function Navbar() {
           <Link to="/">
             <img
               src={screenWidth > 800 ? fullLogo : logo}
-              alt="DeCritic Logo"
+              alt="gamocrytic Logo"
             />
           </Link>
         </div>
