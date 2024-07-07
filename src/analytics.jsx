@@ -1,6 +1,7 @@
 import ReactGA from "react-ga4";
 import {TRACKING_ID} from "../config/global";
 
+// GA Initialized
 ReactGA.initialize(TRACKING_ID);
 
 export const trackPageview = (page) => {
