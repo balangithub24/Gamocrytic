@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/logo/D-Logo-Dark.svg";
+import logo from "../assets/logo/G-Logo-Dark.svg";
 
 import "../styles/Logo.css";
 
